@@ -34,6 +34,11 @@ public class RequestWrapper extends HttpServletRequestWrapper {
         paramMap.putAll(request.getParameterMap());
     }
 
+    /**
+     * 获取原body中的内容JSONObject，并且把header中的值取出来放入，写入内存字节流，并且把值存入map中，读取单个参数值时用到
+     * @param request
+     * @param newParams
+     */
     public RequestWrapper(HttpServletRequest request, JSONObject newParams) {
         super(request);
         byteArray = newParams.toString().getBytes(Charset.forName("UTF-8"));
@@ -42,6 +47,11 @@ public class RequestWrapper extends HttpServletRequestWrapper {
         putHeader("Content-length", byteArray.length + "");
     }
 
+    /**
+     * 重写输入流，从内存字节流中读取
+     * @return
+     * @throws IOException
+     */
     @Override
     public ServletInputStream getInputStream() throws IOException {
         ByteArrayInputStream bais = new ByteArrayInputStream(byteArray);
@@ -70,6 +80,11 @@ public class RequestWrapper extends HttpServletRequestWrapper {
 
     }
 
+    /**
+     * 重写读取单个参数方法，从新的map中读取
+     * @param name
+     * @return
+     */
     @Override
     public String getParameter(String name) {
         String[] array = paramMap.get(name);

@@ -14,7 +14,6 @@ import java.io.*;
  */
 public class ResponseWrapper extends HttpServletResponseWrapper {
     private ServletOutputStream outputStream = null;
-    private PrintWriter printWriter = null;
     private ByteArrayOutputStream baos = null;
 
     public ResponseWrapper(HttpServletResponse response) {

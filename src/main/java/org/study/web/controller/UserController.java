@@ -18,12 +18,6 @@ import javax.servlet.http.HttpServletRequest;
 public class UserController {
 
     //http://localhost:8080/user/list
-    /**
-    {
-    "startDate": "2019-09-01T12:12:12",
-    "endDate": "2019-09-21T12:12:12"
-}
-     */
     @RequestMapping("list")
     public Object listUser(@RequestBody UserQuery query, HttpServletRequest request) {
         System.out.println(request.getParameter("token"));
