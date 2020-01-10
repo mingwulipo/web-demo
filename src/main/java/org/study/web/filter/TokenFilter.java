@@ -18,7 +18,7 @@ import java.io.IOException;
  * @date: 2019-09-25 14:49
  * @version: v1.0
  */
-@Component
+//@Component
 public class TokenFilter implements Filter {
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {
